@@ -1,4 +1,4 @@
-if (!window.OSE_Running && window.location.href.includes("opensauce.com/exhibits") {
+if (!window.OSE_Running && window.location.href.includes("opensauce.com/exhibits")) {
   window.OSE_Running = true;
 
   // ==UserScript==
