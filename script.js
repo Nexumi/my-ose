@@ -4,7 +4,7 @@ if (!window.OSE_Running && window.location.href.includes("opensauce.com/exhibits
   // ==UserScript==
   // @name         Open Sauce Exhibits Highlighter
   // @namespace    http://jpkit.us/
-  // @version      0.1
+  // @version      0.2
   // @description  Highlight interesting exhibits
   // @author       Nexumi
   // @match        https://opensauce.com/exhibits/
@@ -83,7 +83,22 @@ if (!window.OSE_Running && window.location.href.includes("opensauce.com/exhibits
       }
   
       const navbar = document.getElementsByClassName('MuiPagination-ul css-nhb8h9')[0];
+      const search = document.getElementsByClassName('MuiInputBase-input MuiOutlinedInput-input css-s3ol1d')[0];
+      const clearFilter = document.getElementsByClassName('MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1mcq4is')[0];
+  
       navbar.addEventListener('click', highlight);
+      search.addEventListener('input', highlight);
+      clearFilter.addEventListener('click', highlight);
+  
+      const findingFilter = setInterval(() => {
+          try {
+              const filter = document.getElementsByClassName('MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')[0];
+              filter.addEventListener('click', highlight);
+          }
+          catch (ignored) {
+          }
+      });
+  
       highlight();
   })();
 }
